@@ -1,4 +1,4 @@
-name: CI
+name: Jelly
 on:
   push:
     branches: [ "main" ]
@@ -18,7 +18,7 @@ jobs:
         repository: LineageOS/android_packages_apps_Jelly
     - name: Get date
       id: date
-      run: (echo -n "date=" && date +"%Y-%m-%d%H-%M-%S") >> "$GITHUB_OUTPUT"
+      run: echo date=$(date +"%Y.%m.%d.%H.%M.%S") >> "$GITHUB_OUTPUT"
     - name: set up JDK 21
       uses: actions/setup-java@v4
       with:
@@ -36,6 +36,6 @@ jobs:
       if: github.event_name != 'pull_request'
       with:
         name: Jelly build on ${{steps.date.output.date}}
-        tag_name: jelly-${{steps.date.output.date}}
+        tag_name: jelly.${{steps.date.output.date}}
         prerelease: true
         path: ${{steps.path.outputs.apk}}
