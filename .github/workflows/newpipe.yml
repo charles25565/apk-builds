@@ -1,0 +1,37 @@
+name: NewPipe
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: TeamNewPipe/NewPipe
+    - name: set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: "21"
+        distribution: "temurin"
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Build with Gradle
+      run: ./gradlew assembleDebug
+    - name: Get path
+      id: path
+      run: echo "apk=$(find -iname *.apk -print -quit)" >> "$GITHUB_OUTPUT"
+    - uses: softprops/action-gh-release@v2
+      if: github.event_name != 'pull_request'
+      with:
+        name: NewPipe
+        tag_name: continuous.newpipe
+        prerelease: true
+        files: ${{steps.path.outputs.apk}}
