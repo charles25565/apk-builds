@@ -1,0 +1,55 @@
+name: Builder
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        apps:
+          - name: aperture
+            repo: LineageOS/android_packages_apps_Aperture
+          - name: camelot
+            repo: LineageOS/android_packages_apps_Camelot
+          - name: glimpse
+            repo: LineageOS/android_packages_apps_Glimpse
+          - name: jelly
+            repo: LineageOS/android_packages_apps_Jelly
+          - name: newpipe
+            repo: LineageOS/android_packages_apps_NewPipe
+          - name: recorder
+            repo: LineageOS/android_packages_apps_Recorder
+          - name: securecamera
+            repo: GrapheneOS/Camera
+          - name: securepdfviewer
+            repo: GrapheneOS/PdfViewer
+          - name: twelve
+            repo: LineageOS/android_packages_apps_Twelve
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        repository: ${{matrix.apps.repo}}
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: "21"
+        distribution: "temurin"
+    - name: Build with Gradle
+      run: ./gradlew assembleDebug
+    - name: Rename app package
+      run: mv app/build/outputs/apk/debug/app-debug.apk ${{matrix.apps.name}}.apk
+    - uses: softprops/action-gh-release@v2
+      if: github.event_name != 'pull_request'
+      with:
+        name: Continuous
+        tag_name: continuous
+        prerelease: true
+        files: ${{matrix.apps.name}}.apk
