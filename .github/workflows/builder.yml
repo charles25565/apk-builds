@@ -24,7 +24,7 @@ jobs:
           - name: jelly
             repo: LineageOS/android_packages_apps_Jelly
           - name: newpipe
-            repo: LineageOS/android_packages_apps_NewPipe
+            repo: TeamNewPipe/NewPipe
           - name: recorder
             repo: LineageOS/android_packages_apps_Recorder
           - name: securecamera
