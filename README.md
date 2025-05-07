@@ -4,7 +4,7 @@ Unofficial weekly builds of various Android apps.
 
 ## Download
 
-Get it on the [Releases page](https://github.com/charles25565/apk-builds/releases).
+Get it continuously on the [Releases page](https://github.com/charles25565/apk-builds/releases/tag/continuous).
 
 ## License
 
