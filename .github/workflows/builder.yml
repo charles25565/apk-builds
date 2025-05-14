@@ -44,7 +44,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: "21"
-        distribution: "temurin"
+        distribution: "jetbrains"
     - name: Build app package
       run: ./gradlew assembleDebug
     - name: Rename app package
