@@ -1,6 +1,6 @@
 # apk-builds
 
-Unofficial weekly builds of various Android apps.
+Unofficial daily builds of various Android apps.
 
 ## Download
 
