@@ -25,6 +25,8 @@ jobs:
             repo: LineageOS/android_packages_apps_Glimpse
           - name: jelly
             repo: LineageOS/android_packages_apps_Jelly
+          - name: neostumbler
+            repo: mjaakko/NeoStumbler
           - name: newpipe
             repo: TeamNewPipe/NewPipe
           - name: recorder
