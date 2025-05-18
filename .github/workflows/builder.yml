@@ -25,6 +25,8 @@ jobs:
             repo: LineageOS/android_packages_apps_Glimpse
           - name: jelly
             repo: LineageOS/android_packages_apps_Jelly
+          - name: neostumbler
+            repo: mjaakko/NeoStumbler
           - name: newpipe
             repo: TeamNewPipe/NewPipe
           - name: readyou
@@ -44,6 +46,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: ${{matrix.apps.repo}}
+        submodules: true
     - name: Install Java
       uses: actions/setup-java@v4
       with:
