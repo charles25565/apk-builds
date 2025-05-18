@@ -27,8 +27,6 @@ jobs:
             repo: LineageOS/android_packages_apps_Jelly
           - name: newpipe
             repo: TeamNewPipe/NewPipe
-          - name: obtainium
-            repo: ImranR98/Obtainium
           - name: readyou
             repo: Ashinch/ReadYou
           - name: recorder
@@ -37,6 +35,8 @@ jobs:
             repo: GrapheneOS/Camera
           - name: securepdfviewer
             repo: GrapheneOS/PdfViewer
+          - name: thunderbird
+            repo: thunderbird/thunderbird-android
           - name: twelve
             repo: LineageOS/android_packages_apps_Twelve
     steps:
