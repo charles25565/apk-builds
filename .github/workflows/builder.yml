@@ -19,8 +19,12 @@ jobs:
             repo: LineageOS/android_packages_apps_Aperture
           - name: camelot
             repo: LineageOS/android_packages_apps_Camelot
+          - name: etar
+            repo: Etar-Group/Etar-Calendar
           - name: flashdim
             repo: cyb3rko/flashdim
+          - name: fossifygallery
+            repo: FossifyOrg/Gallery
           - name: glimpse
             repo: LineageOS/android_packages_apps_Glimpse
           - name: jelly
