@@ -23,8 +23,6 @@ jobs:
             repo: cyb3rko/flashdim
           - name: glimpse
             repo: LineageOS/android_packages_apps_Glimpse
-          - name: gptassist
-            repo: woheller69/gptAssist
           - name: jelly
             repo: LineageOS/android_packages_apps_Jelly
           - name: newpipe
@@ -46,7 +44,7 @@ jobs:
     - name: Install Java
       uses: actions/setup-java@v4
       with:
-        java-version: "17"
+        java-version: "21"
         distribution: "jetbrains"
     - name: Build app package
       run: ./gradlew assembleDebug
